@@ -1,0 +1,27 @@
+From: Markus Koschany <apo@debian.org>
+Date: Fri, 11 Oct 2019 13:26:05 +0200
+Subject: disable test
+
+Disable test that requires a method from junit4.13. Not yet in Debian.
+---
+ main/src/test/java/org/objenesis/ObjenesisTest.java | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/main/src/test/java/org/objenesis/ObjenesisTest.java b/main/src/test/java/org/objenesis/ObjenesisTest.java
+index 8e138a0..fc1fe55 100644
+--- a/main/src/test/java/org/objenesis/ObjenesisTest.java
++++ b/main/src/test/java/org/objenesis/ObjenesisTest.java
+@@ -62,11 +62,11 @@ public class ObjenesisTest {
+       assertSame(i1, i2);
+    }
+ 
+-   @Test
++   /*@Test
+    public final void testGetInstantiatorOf_primitive() {
+       Objenesis o = new ObjenesisStd();
+       assertThrows(IllegalArgumentException.class, () -> o.getInstantiatorOf(long.class));
+-   }
++   }*/
+ 
+    @Test
+    public final void testToString() {

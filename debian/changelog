@@ -1,0 +1,183 @@
+objenesis (3.2-1) unstable; urgency=medium
+
+  * New upstream version 3.2.
+  * Declare compliance with Debian Policy 4.6.0.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 24 Aug 2021 01:53:12 +0200
+
+objenesis (3.1-1) unstable; urgency=medium
+
+  * New upstream version 3.1.
+  * Switch to debhelper-compat = 12.
+  * Declare compliance with Debian Policy 4.4.1.
+
+ -- Markus Koschany <apo@debian.org>  Fri, 11 Oct 2019 13:27:50 +0200
+
+objenesis (3.0.1-2) unstable; urgency=medium
+
+  * Ignore surefire test failures. (Closes: #911980)
+
+ -- Markus Koschany <apo@debian.org>  Sun, 28 Oct 2018 13:39:09 +0100
+
+objenesis (3.0.1-1) unstable; urgency=medium
+
+  * New upstream version 3.0.1.
+
+ -- Markus Koschany <apo@debian.org>  Sun, 21 Oct 2018 15:36:41 +0200
+
+objenesis (3.0-1) unstable; urgency=medium
+
+  * New upstream version 3.0.
+  * Drop all patches. They were merged upstream.
+
+ -- Markus Koschany <apo@debian.org>  Fri, 12 Oct 2018 22:10:39 +0200
+
+objenesis (2.6-3) unstable; urgency=medium
+
+  * Team upload.
+  * Disabled the ClassDefinitionUtils.defineClass() method (which is never
+    used in Debian) to work around the build failure with Java 11
+    (Closes: #909258)
+  * Standards-Version updated to 4.2.1
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Wed, 03 Oct 2018 13:31:41 +0200
+
+objenesis (2.6-2) unstable; urgency=medium
+
+  * Team upload.
+  * Fixed the test failure with Java 10 (Closes: #898839)
+  * Standards-Version updated to 4.1.4
+  * Switch to debhelper level 11
+  * Use salsa.debian.org Vcs-* URLs
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Wed, 16 May 2018 15:06:21 +0200
+
+objenesis (2.6-1) unstable; urgency=medium
+
+  [ tony mancill ]
+  * Remove Gabriele Giacone from Uploaders (Closes: #856767)
+
+  [ Markus Koschany ]
+  * New upstream version 2.6.
+    - Repack the tarball and remove a prebuilt jar file.
+  * Declare compliance with Debian Policy 4.0.0.
+  * Use https for Format field.
+
+ -- Markus Koschany <apo@debian.org>  Sat, 24 Jun 2017 16:36:28 +0200
+
+objenesis (2.5.1-1) unstable; urgency=medium
+
+  * New upstream version 2.5.1.
+  * Switch to compat level 10.
+  * Build-depend on libmaven-bundle-plugin-java.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 18 Jan 2017 11:54:46 +0100
+
+objenesis (2.4-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.4.
+  * Switch back to maven-debian-helper.
+  * Update debian/copyright for new release.
+
+ -- Markus Koschany <apo@debian.org>  Thu, 26 May 2016 22:34:44 +0200
+
+objenesis (2.3-2) unstable; urgency=medium
+
+  * debian/watch: track new releases at github.com.
+  * Readd parent pom for objenesis 2.3 which was absent from the
+    original tarball provided at objenesis.org. (Closes: #824587)
+
+ -- Markus Koschany <apo@debian.org>  Tue, 17 May 2016 22:30:31 +0200
+
+objenesis (2.3-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.3.
+  * Declare compliance with Debian Policy 3.9.8.
+  * Vcs-Git: Use https.
+  * debian/watch: Use version=4
+  * The build system changed from Maven to nothing. Use javahelper and
+    maven-repo-helper to fix that.
+  * Add debian/pom.xml.
+  * Use libobjenesis-java-doc.javadoc to install the documentation.
+  * Update debian/copyright for new release.
+  * Add README.source.
+
+ -- Markus Koschany <apo@debian.org>  Mon, 16 May 2016 17:43:50 +0200
+
+objenesis (2.2-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.2.
+  * get-orig-source: Add --download-current-version option.
+  * Move all build-dependencies to Build-Depends.
+  * Update my e-mail address.
+  * debian/copyright: Fix path to BEA licensed file.
+  * Vcs-Browser: Use https.
+  * Switch from cdbs to dh sequencer.
+  * Update debian/watch file. Thanks to Bart Martens.
+
+ -- Markus Koschany <apo@debian.org>  Mon, 14 Dec 2015 23:09:24 +0100
+
+objenesis (2.1-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Markus Koschany <apo@gambaru.de>  Tue, 28 Apr 2015 23:31:47 +0200
+
+objenesis (2.1-1) experimental; urgency=medium
+
+  * Imported Upstream version 2.1
+  * Add myself to Uploaders.
+  * Update watch file. The objenesis project moved to Github.
+    Drop orig-tar.sh. The sources are pristine now.
+  * Update debian/copyright for new release.
+  * Use compat level 9 and require debhelper >= 9.
+  * wrap-and-sort -sa.
+  * Use canonical Vcs address.
+  * Declare compliance with Debian Policy 3.9.6.
+  * Drop maven.cleanIgnoreRules and maven.publishedRules because they are
+    unused.
+  * Drop README.source. The sources are pristine now.
+  * Build-depend on junit4 instead of junit.
+  * Add maven-release-plugin to maven.ignoreRules.
+  * Add maven-license-plugin to maven.ignoreRules.
+  * Update maven rule for junit4.
+
+ -- Markus Koschany <apo@gambaru.de>  Tue, 25 Nov 2014 22:32:47 +0100
+
+objenesis (1.2+full-3) unstable; urgency=low
+
+  * Team upload.
+  * Apply patch from Ilya Barygin to fix encoding issue
+    with Java7.  (Closes: #678164, LP: #888987)
+
+ -- Niels Thykier <niels@thykier.net>  Tue, 19 Jun 2012 19:55:59 +0200
+
+objenesis (1.2+full-2) unstable; urgency=low
+
+  * Team upload
+  * Apply patch from Moritz Mühlenhoff <muehlenhoff@univention.de>
+    to install objenesis jar in /usr/share/java (Closes: #667000)
+  * d/libobjenensis-java.poms: ignore tck module
+  * d/copyright: update to spec 1.0, fix Source to indicate correct location
+  * remove patch to ignore tck module, as d/libobjenensis-java.poms
+    configuration takes care of this issue already.
+  * d/control: update Standards-Version: 3.9.3, no change.
+
+ -- Ludovic Claude <ludovic.claude@laposte.net>  Sat, 07 Apr 2012 00:43:35 +0200
+
+objenesis (1.2+full-1) unstable; urgency=low
+
+  * Team upload
+  * Remove Java runtime from Depends.
+  * Update Standards-Version: 3.9.2.
+  * Download full upstream source code from upstream's svn repository.
+  * Use Maven to build the package.
+  * Do not build the tck module because of missing dependencies.
+
+ -- Torsten Werner <twerner@debian.org>  Sun, 18 Sep 2011 21:47:10 +0200
+
+objenesis (1.2-1) unstable; urgency=low
+
+  * Initial release. (Closes: #573812)
+
+ -- Gabriele Giacone <1o5g4r8o@gmail.com>  Sun, 14 Mar 2010 03:37:49 +0100

@@ -1,0 +1,18 @@
+<!--
+To be able to deploy on Sonatype, add the servers below
+-->
+
+<settings>
+  <servers>
+    <server>
+      <id>sonatype-nexus-snapshots</id>
+      <username>myusername</username>
+      <password>mypassword</password>      
+    </server>
+    <server>
+      <id>sonatype-nexus-staging</id>
+      <username>myusername</username>
+      <password>mypassword</password>      
+    </server>  
+  </servers>  
+</settings>

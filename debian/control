@@ -1,0 +1,61 @@
+Source: objenesis
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Markus Koschany <apo@debian.org>
+Build-Depends:
+ debhelper-compat (= 12),
+ default-jdk,
+ default-jdk-doc,
+ junit4,
+ libmaven-bundle-plugin-java,
+ libmaven-enforcer-plugin-java,
+ libmaven-javadoc-plugin-java,
+ maven-debian-helper (>= 1.4)
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/java-team/objenesis.git
+Vcs-Browser: https://salsa.debian.org/java-team/objenesis
+Homepage: http://www.objenesis.org/
+
+Package: libobjenesis-java
+Architecture: all
+Depends: ${maven:Depends}, ${misc:Depends}
+Recommends: ${maven:OptionalDepends}
+Suggests: libobjenesis-java-doc
+Description: Java library to instantiate a new object of a particular class
+ Objenesis is a small Java library that serves one purpose: to instantiate a
+ new object of a particular class.
+ Java already supports this dynamic instantiation of classes using
+ Class.newInstance(). However, this only works if the class has an appropriate
+ constructor. There are many times when a class cannot be instantiated this
+ way, such as when the class contains:
+  * Constructors that require arguments.
+  * Constructors that have side effects.
+  * Constructors that throw exceptions.
+ As a result, it is common to see restrictions in libraries stating that
+ classes must require a default constructor.
+ Objenesis aims to overcomes these restrictions by bypassing the constructor
+ on object instantiation.
+
+Package: libobjenesis-java-doc
+Architecture: all
+Section: doc
+Depends: ${maven:DocDepends}, ${misc:Depends}
+Recommends: ${maven:DocOptionalDepends}
+Suggests: libobjenesis-java
+Description: Documentation for Objenesis
+ Objenesis is a small Java library that serves one purpose: to instantiate a
+ new object of a particular class.
+ Java already supports this dynamic instantiation of classes using
+ Class.newInstance(). However, this only works if the class has an appropriate
+ constructor. There are many times when a class cannot be instantiated this
+ way, such as when the class contains:
+  * Constructors that require arguments.
+  * Constructors that have side effects.
+  * Constructors that throw exceptions.
+ As a result, it is common to see restrictions in libraries stating that
+ classes must require a default constructor.
+ Objenesis aims to overcomes these restrictions by bypassing the constructor
+ on object instantiation.
+ .
+ This is the API documentation for Objenesis
