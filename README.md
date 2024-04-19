@@ -8,14 +8,14 @@ You can find the website and user documentation at [objenesis.org](http://objene
 
 ## Project status
 
-[![Build Status](https://travis-ci.org/easymock/objenesis.svg?branch=master)](https://travis-ci.org/easymock/objenesis)
+[![Build Status](https://github.com/easymock/objenesis/actions/workflows/ci.yml/badge.svg)](https://github.com/easymock/objenesis/actions/workflows/ci.yml?query=branch%3Amaster)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.objenesis/objenesis/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.objenesis/objenesis)
 
 ## Environment setup
 
 I'm using:
-- Maven 3.6.3
-- IntelliJ Ultimate 2021.1 (thanks to JetBrains for the license) (it should also work with Eclipse)
+- Maven 3.8.5
+- IntelliJ Ultimate 2022.1.2 (thanks to JetBrains for the license) (it should also work with Eclipse)
 
 To configure your local workspace:
 - Import the Maven parent project to Eclipse or IntelliJ
@@ -41,10 +41,18 @@ This build will create the source and javadoc jars and run spotbugs.
 
 ### Run the Android TCK
 
+####Install required tools:
+##### MacOs / *nix
 - Install the Android SDK (`brew cask install android-sdk`)
 - Install `platform-tools` and `build-tools` using the sdkmanager (`sdkmanager "platform-tools" "build-tools"`)
 - Add an `ANDROID_HOME` to target the Android SDK (`export ANDROID_HOME=$(realpath $(echo "$(dirname $(readlink $(which sdkmanager)))/../.."))`)
-- Configure a device (real or simulated) and launch it (use API 26, after that it asks for a signature, that isn't supported yet)
+#### Windows
+- [Install Android Studio](https://developer.android.com/studio)
+- Launch studio and install SDK and emulator
+- Add an `ANDROID_HOME` to environmental variables (path used to install SDK on previous step)
+
+####Run
+- Configure a device (real or simulated) and launch it (use **API 26**, after that it asks for a signature, that isn't supported yet)
 - Activate the debug mode if it's a real device
 - `mvn package -Pandroid`
 
@@ -85,11 +93,15 @@ cd benchmark
 
 ## To upgrade the Maven wrapper
 
-`mvn -N io.takari:maven:wrapper -Dmaven=3.6.3`
+`mvn wrapper:wrapper`
 
 ## To update the license
 
 `mvn validate license:format -Pall`
+
+## To run modernizer
+
+`mvn modernizer:modernizer -Pall`
 
 ## To release
 
@@ -97,7 +109,7 @@ cd benchmark
 
 ```bash
 # Get the milestone matching the version
-version=(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | cut -d'-' -f1)
+version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | cut -d'-' -f1)
 milestone=$(curl -s "https://api.github.com/repos/easymock/objenesis/milestones" | jq ".[] | select(.title==\"$version\") | .number")
 echo "<h1>Version $version ($(date '+%Y-%m-%d'))</h1>"
 echo

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 the original author or authors.
+ * Copyright 2006-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  */
 package org.objenesis.instantiator.exotic.util;
 
-import org.junit.Test;
-import org.objenesis.Objenesis;
+import org.junit.jupiter.api.Test;
+import org.objenesis.test.EmptyClass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Henri Tremblay
@@ -29,7 +29,7 @@ public class ClassDefinitionUtilsTest {
    public void testDefineClass() throws Exception {
       String className = "org.objenesis.test.EmptyClassBis";
       byte[] b = ClassDefinitionUtils.readClass(className);
-      Class<?> c = ClassDefinitionUtils.defineClass(className, b, Objenesis.class, getClass().getClassLoader());
+      Class<?> c = ClassDefinitionUtils.defineClass(className, b, EmptyClass.class, getClass().getClassLoader());
       assertEquals(c.getName(), className);
    }
 

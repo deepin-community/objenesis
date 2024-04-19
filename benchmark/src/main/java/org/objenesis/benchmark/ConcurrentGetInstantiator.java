@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 the original author or authors.
+ * Copyright 2006-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package org.objenesis.benchmark;
 
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.NoOp;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 import org.objenesis.instantiator.ObjectInstantiator;
@@ -44,7 +44,7 @@ import java.util.concurrent.TimeUnit;
 public class ConcurrentGetInstantiator {
 
    private static final int COUNT = 1000;
-   
+
    public static class SunInstantiatorStrategy extends BaseInstantiatorStrategy {
       @Override
       public <T> ObjectInstantiator<T> newInstantiatorOf(Class<T> type) {
@@ -55,10 +55,10 @@ public class ConcurrentGetInstantiator {
    InstantiatorStrategy std = new StdInstantiatorStrategy();
    InstantiatorStrategy single = new SingleInstantiatorStrategy(SunReflectionFactoryInstantiator.class);
    InstantiatorStrategy custom = new SunInstantiatorStrategy();
-   
+
    Objenesis cachedStd = new ObjenesisStd();
    Objenesis uncachedStd = new ObjenesisStd(false);
-   
+
    Class<?>[] toInstantiate = new Class[COUNT];
 
    @State(Scope.Thread)
@@ -68,11 +68,14 @@ public class ConcurrentGetInstantiator {
 
    @Setup
    public void setUp() {
+      ClassLoadingStrategy<ClassLoader> strategy = new ClassLoadingStrategy.ForUnsafeInjection();
+
       for(int i = 0; i < COUNT; i++) {
-         Enhancer enhancer = new Enhancer();
-         enhancer.setUseCache(false); // deactivate the cache to get a new instance each time
-         enhancer.setCallbackType(NoOp.class);
-         Class<?> c = enhancer.createClass();
+         Class<?> c = new ByteBuddy()
+            .subclass(Object.class)
+            .make()
+            .load(ConcurrentGetInstantiator.class.getClassLoader(), strategy)
+            .getLoaded();
          toInstantiate[i] = c;
       }
    }
@@ -91,12 +94,12 @@ public class ConcurrentGetInstantiator {
    public ObjectInstantiator<?> custom(ThreadState state) {
       return custom.newInstantiatorOf(toInstantiate[state.index++ % COUNT]);
    }
-   
+
    @Benchmark
    public ObjectInstantiator<?> cachedStd(ThreadState state) {
       return cachedStd.getInstantiatorOf(toInstantiate[state.index++ % COUNT]);
    }
-   
+
    @Benchmark
    public ObjectInstantiator<?> uncachedStd(ThreadState state) {
       return uncachedStd.getInstantiatorOf(toInstantiate[state.index++ % COUNT]);

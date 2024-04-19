@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 the original author or authors.
+ * Copyright 2006-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,13 @@ package org.objenesis.tck;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisSerializer;
 import org.objenesis.ObjenesisStd;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Integration test for Objenesis. Should pass successfully on every supported JVM for all Objenesis
@@ -48,7 +49,7 @@ public class ObjenesisTest {
 
       @Override
       public void result(Candidate.CandidateType type, boolean worked) {
-         assertTrue("Instantiating " + currentCandidate + " for " + type + " failed", worked);
+         assertTrue(worked, "Instantiating " + currentCandidate + " for " + type + " failed");
       }
 
       @Override

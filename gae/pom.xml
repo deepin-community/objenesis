@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright 2006-2021 the original author or authors.
+    Copyright 2006-2022 the original author or authors.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
   <parent>
     <artifactId>objenesis-parent</artifactId>
     <groupId>org.objenesis</groupId>
-    <version>3.2</version>
+    <version>3.3</version>
   </parent>
 
   <artifactId>gae</artifactId>
@@ -34,7 +34,7 @@
   <properties>
     <app.id>objenesis</app.id>
     <app.version>2</app.version>
-    <appengine.version>1.9.82</appengine.version>
+    <appengine.version>2.0.5</appengine.version>
     <gcloud.plugin.version>2.0.9.133.v201611104</gcloud.plugin.version>
   </properties>
 
