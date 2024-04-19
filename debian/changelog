@@ -1,3 +1,25 @@
+objenesis (3.3-3) unstable; urgency=medium
+
+  * Don't suggest the -doc package anymore.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 17 Jan 2023 14:18:23 +0100
+
+objenesis (3.3-2) unstable; urgency=medium
+
+  * Declare compliance with Debian Policy 4.6.2.
+  * Drop binary package libobjenesis-java-doc. Do not build the javadoc.
+    (Closes: #1028709)
+
+ -- Markus Koschany <apo@debian.org>  Tue, 17 Jan 2023 14:10:36 +0100
+
+objenesis (3.3-1) unstable; urgency=medium
+
+  * New upstream version 3.3.
+  * Switch to debhelper-compat = 13.
+  * Declare compliance with Debian Policy 4.6.1.
+
+ -- Markus Koschany <apo@debian.org>  Sat, 06 Aug 2022 13:57:48 +0200
+
 objenesis (3.2-1) unstable; urgency=medium
 
   * New upstream version 3.2.

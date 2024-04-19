@@ -4,12 +4,12 @@ Upstream-Contact: Objenesis Team <http://groups.google.com/group/objenesis-dev>
 Source: https://github.com/easymock/objenesis
 
 Files: *
-Copyright: 2006-2021 Joe Walnes, Henri Tremblay, Leonardo Mesquita
+Copyright: 2006-2022 Joe Walnes, Henri Tremblay, Leonardo Mesquita
 License: Apache-2.0
 
 Files: debian/*
 Copyright: 2010,      Gabriele Giacone <1o5g4r8o@gmail.com>
-           2014-2021, Markus Koschany <apo@debian.org>
+           2014-2022, Markus Koschany <apo@debian.org>
 License: Apache-2.0
 
 License: Apache-2.0
